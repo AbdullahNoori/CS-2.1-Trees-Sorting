@@ -24,39 +24,39 @@ def merge_sort(items):
 
         first_half = items[:mid]
 
-        second_Half = items[mid:]
+        second_half = items[mid:]
 
         # Sorting the first half
         merge_sort(first_half)
         # Sorting the first half
-        merge_sort(second_Half)
+        merge_sort(second_half)
 
         x = y = z = 0
 # Copies the date to temp arrays first_half[] and second_half[]
         while x < len(first_half) and y < len(second_half):    
-            if first_half[x] < second_Half[y]: 
+            if first_half[x] < second_half[y]: 
                 items[z] = first_half[x]
                 x += 1
             else:   
-                items[z] = second_half
-                x += 1
+                items[z] = second_half[y]
+            z += 1
 
-            # Checks to see if any elements are left out.    
+                # Checks to see if any elements are left out.    
         while x < len(first_half):
             items[z] = second_half(x)
             x += 1
             z += 1
         
-        while y < len(second_Half):
-            items[z] = second_Half[y]
+        while y < len(second_half):
+            items[z] = second_half[y]
             y += 1
             z += 1
 
 # Prints the list of items
-    def printList(items):      
-        for x in range(len(items)): 
-            print(items[x], end=" ")
-        print()
+def printList(items):      
+    for x in range(len(items)): 
+        print(items[x], end=" ")
+    print()
 
 if __name__ == '__main__':  
     items = [100, 5, 1, 20, 30, 40, 80, 100, 30, 40]
