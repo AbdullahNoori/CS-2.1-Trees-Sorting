@@ -19,7 +19,16 @@ def counting_sort(numbers):
 
     buckets = [0] * (max + 1)
 
+    for i in numbers:
+        buckets[i] += 1
 
+    i = 0
+    for x in range(max + 1):
+         for a in range(buckets[x]):
+             numbers[i] = x
+             i += 1
+
+    return numbers
 if __name__ == '__main__':
     sorted_List = counting_sort([19, 12, 15, 18,2, 20, 1, 77, 88, 25, 50, 99, 100])
     print(sorted_List)
