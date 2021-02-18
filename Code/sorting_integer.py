@@ -11,10 +11,19 @@ def counting_sort(numbers):
     # TODO: Loop over given numbers and increment each number's count
     # TODO: Loop over counts and append that many numbers into output list
     # FIXME: Improve this to mutate input instead of creating new output list
-    numbers = ("h", "b", "a", "c", "f", "d", "e", "g")
-    x = sorted(numbers, reverse=True)
-    print(x)
-    
+
+    max = 0
+    for i in range(len(numbers)):
+        if numbers[i] > max:
+            max = numbers[i]
+
+    buckets = [0] * (max + 1)
+
+
+if __name__ == '__main__':
+    sorted_List = counting_sort([19, 12, 15, 18,2, 20, 1, 77, 88, 25, 50, 99, 100])
+    print(sorted_List)
+
 
 def bucket_sort(numbers, num_buckets=10):
     """Sort given numbers by distributing into buckets representing subranges,
