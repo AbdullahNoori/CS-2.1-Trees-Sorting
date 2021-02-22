@@ -56,6 +56,55 @@ class PrefixTree:
         # Start with the root node
         node = self.root
         # TODO
+# start at the root 
+# search for the first letter of the prefix in root's       children
+#  if the letter is not there
+# return False 
+# if it is there, look for the next letter 
+# so basically, the first letter node and checks its children
+# repeat until whole prefix is found or False
+
+# below does a reference check
+current = self.root
+# testing below to see if reference check is working
+for letter in prefix:
+  print(letter)
+
+
+
+  def insert(self, word):
+    '''This method will add a new word to the prefix tree input = "dog"'''
+  
+# start with the root
+# check children of root and if the first letter of the word is not there 
+# add a new node with letter
+# else do nothing
+# repeat, get the node corresponding to the letter 
+# check its children for the next letter 
+
+    current = self.root
+    for letter in word:
+    flag = 0 
+    # check if letter in children
+    # TODO: comparing string to node won't work line below!! 
+    # if letter in current.children:
+        # print() 
+    for child in current.children:
+        if child.letter == letter:
+        # already there
+        current = child
+          flag  = 1
+    # I exit this loop without having to found a child with the letter 
+    # then add it
+    if   flag  != 1:
+    childnode = PrefixTreeNode
+    (letter)
+    current.children.append
+    (childnode)
+    current = childnode
+    (PrefixTreeNode(letter))
+
+
 
     def complete(self, prefix):
         """Return a list of all strings stored in this prefix tree that start
@@ -140,3 +189,102 @@ def main():
 
 if __name__ == '__main__':
     main()
+class PrefixTreeNode:
+    
+  def __init__(self, letter):
+
+    # Character string
+    self.letter = letter
+
+    #References to other child nodes
+    self.children = []
+
+    #Is the node the end of a word or not?
+    self.terminal = False
+
+class PrefixTree:
+
+  def __init__(self):
+
+    self.root = PrefixTreeNode("")
+
+  def search(self, prefix):
+    '''This method will return true if a given prefix is present false if not
+    input = "Ca"
+    output = True'''
+    #Start at the root
+    #Search for first letter of the prefix in root's children
+    #If the letter is not there then return False
+    #if it is there, then look for next letter
+    #(Go to that first letter node and check its children and
+    # repeat until whole prefix is found/true or false.
+    current = self.root
+
+    for letter in prefix:
+      found_it = 0
+
+      for child in current.children:
+        if child.letter == letter:
+          #Find letter and check child's children
+          current = child
+          found_it = 1
+          break
+
+      if found_it == 0:
+        return False
+
+    return True
+
+  def insert(self, word):
+    '''This method will add a new word to the prefix tree
+    input = "dog" 
+    '''
+    #Start with the root
+    #Check children of root
+    # Check if first letter of word is not there
+    #Add a new node with letter
+    #Else, do nothing
+    #Repeat,
+    # Get the node corresponding to the letter
+    #Check it's children 
+    current = self.root
+    for letter in word:
+      already_there_flag = 0
+
+      #check if letter in children
+      for child in current.children:
+        if child.letter == letter:
+          #already there
+          current = child
+          already_there_flag = 1
+      #Exit this loop without having found a child with the letter, then add it
+      if already_there_flag != 1:
+        childnode = PrefixTreeNode(letter)
+        current.children.append(childnode)
+        current = childnode
+
+    #When at the end, set terminal to True
+    current.terminal = True
+
+  def find_all_words(self, prefix):
+    '''returns a list of valid words in the tree starting with the given Prefix
+    input "cat"
+    output ["category", "cat"] '''
+    #TODO: Think about how to implement this
+    print('Hello you over there')
+    PrefixTree.search(self,prefix)
+    print('made it ')
+    pass
+
+  def delete(self, word):
+    '''This method will remove a word from the prefix tree
+    input = "dog" '''
+    input = 'dog'
+
+    for word in PrefixTree:
+      input = PrefixTree.get(word, None)
+      if input is None:
+        break
+      
+    else:
+        del input[_end]
