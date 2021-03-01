@@ -35,15 +35,30 @@ class PrefixTree:
 
     def is_empty(self):
         """Return True if this prefix tree is empty (contains no strings)."""
-        # TODO
+        self.size == 0
+
 
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
-        # TODO
+        node, base = self.find_node(string)
+
+        if len(string) == base and node.in_Prefix():    
+            return True 
+            
+        return False 
 
     def insert(self, string):
         """Insert the given string into this prefix tree."""
         # TODO
+        root = self.root
+        len1 = len(word)
+
+        for i in range(len1):
+            index = self.get_index(word[i])
+            if index not in root.children:
+                root.children[index] = self.get_node()
+            root = root.children.get(index)
+        root.terminating = True
 
     def _find_node(self, string):
         """Return a pair containing the deepest node in this prefix tree that
@@ -67,7 +82,7 @@ class PrefixTree:
         current = self.root
         # testing below to see if reference check is working
         for letter in prefix:
-        print(letter)
+            print(letter)
 
     def complete(self, prefix):
         """Return a list of all strings stored in this prefix tree that start
