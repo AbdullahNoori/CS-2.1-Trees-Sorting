@@ -42,23 +42,28 @@ class PrefixTree:
         """Return True if this prefix tree contains the given string."""
         node, base = self.find_node(string)
 
-        if len(string) == base and node.in_Prefix():    
+        if len(string) == base and node.is_Prefix():    
             return True 
-            
+
         return False 
 
     def insert(self, string):
         """Insert the given string into this prefix tree."""
         # TODO
-        root = self.root
-        len1 = len(word)
+        node = self.root
 
-        for i in range(len1):
-            index = self.get_index(word[i])
-            if index not in root.children:
-                root.children[index] = self.get_node()
-            root = root.children.get(index)
-        root.terminating = True
+        for character in range(len(string)):
+            if node.has_child(character)
+                node = node.get_child(character)
+
+            else:   
+                new_node = PrefixTree(character)
+                node.add_child(character, new_node)
+                node = new_node
+
+        if not node.is_Prefix():    
+            node.terminal = True
+            self.size += 1
 
     def _find_node(self, string):
         """Return a pair containing the deepest node in this prefix tree that
