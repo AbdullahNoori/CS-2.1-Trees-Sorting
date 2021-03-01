@@ -53,7 +53,7 @@ class PrefixTree:
         node = self.root
 
         for character in range(len(string)):
-            if node.has_child(character)
+            if node.has_child(character):
                 node = node.get_child(character)
 
             else:   
@@ -75,6 +75,7 @@ class PrefixTree:
             return self.root, 0
         # Start with the root node
         node = self.root
+        base = 0
         # TODO
         # start at the root 
         # search for the first letter of the prefix in root's       children
@@ -84,10 +85,17 @@ class PrefixTree:
         # so basically, the first letter node and checks its children
         # repeat until whole prefix is found or False
         # below does a reference check
-        current = self.root
+
         # testing below to see if reference check is working
-        for letter in prefix:
-            print(letter)
+        for letter in string:
+            if node.has_child(letter):  
+                node = node.get_child()
+                base += 1
+            else 
+                return None, base
+        return node, base
+            
+
 
     def complete(self, prefix):
         """Return a list of all strings stored in this prefix tree that start
@@ -95,12 +103,32 @@ class PrefixTree:
         # Create a list of completions in prefix tree
         completions = []
         # TODO
+        node = self._find_node(prefix)[0]
+
+        if node == None:
+            return completions
+        if node.is_Prefix():    
+            completeions.append(prefix)
+
+        for character in node.children: 
+            child_node = node.get_child(character)
+            self.traverse(child_node, prefix+character, completions.append)
+
+        return completions
+
 
     def strings(self):
         """Return a list of all strings stored in this prefix tree."""
         # Create a list of all strings in prefix tree
         all_strings = []
         # TODO
+        node = self.root
+        for child in node.children:
+            child_node = node.get_child(child)
+            self.traverse(child_node, all_strings.append, child)
+            
+        return all_strings
+
 
     def _traverse(self, node, prefix, visit):
         """Traverse this prefix tree with recursive depth-first traversal.
